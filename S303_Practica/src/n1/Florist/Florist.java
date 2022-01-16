@@ -47,7 +47,6 @@ public class Florist implements Serializable {
 		boolean exit = false;
 
 		File file = new File("florist.txt");
-		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 
 		if (file.isFile()) {
@@ -99,23 +98,36 @@ public class Florist implements Serializable {
 			throws ClassNotFoundException, FileNotFoundException, IOException {
 
 		Scanner sc = new Scanner(System.in);
-		int floristId = 0;
 		String floristName;
+		int floristId = floristerias.size() -1;		
 		File file = new File("florist.txt");
 		ObjectOutputStream oos = null;
+		boolean found = false;
 
 		System.out.println("Type the name of the florist");
 		floristName = sc.nextLine().toUpperCase();
 
-		Florist florist = new Florist(floristId, floristName);
-		floristerias.add(florist);
+		for (int i = 0; i < floristerias.size(); i++) {
 
-		oos = new ObjectOutputStream(new FileOutputStream(file));
-		oos.writeObject(floristerias);
-		oos.close();
+			if (floristName.equals(floristerias.get(i).getFloristName())) {
 
-		System.out.println(florist.toString());
-		System.out.println("Florist " + floristName + " added to application");
+				found = true;
+				System.out.println("There is already a flower shop called " + floristName + " in the application");
+			}
+		}				
+
+		if (found != true) {
+
+			Florist florist = new Florist(floristId, floristName);
+			floristerias.add(florist);
+
+			oos = new ObjectOutputStream(new FileOutputStream(file));
+			oos.writeObject(floristerias);
+			oos.close();
+
+			System.out.println("Florist " + floristName + " added to application");
+			System.out.println(florist.toString());
+		}
 	}
 
 	public static void deleteFlorist(ArrayList<Florist> floristerias) throws IOException {
