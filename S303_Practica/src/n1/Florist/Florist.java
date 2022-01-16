@@ -95,8 +95,7 @@ public class Florist implements Serializable {
 		return choice;
 	}
 
-	public static void addFlorist(ArrayList<Florist> floristerias)
-			throws ClassNotFoundException, FileNotFoundException, IOException {
+	public static void addFlorist(ArrayList<Florist> floristerias) throws ClassNotFoundException, FileNotFoundException, IOException {
 
 		Scanner sc = new Scanner(System.in);
 		int floristId = 0;
