@@ -94,11 +94,13 @@ public class Florist implements Serializable {
 		return choice;
 	}
 
-	public static void addFlorist(ArrayList<Florist> floristerias) throws ClassNotFoundException, FileNotFoundException, IOException {
+	public static void addFlorist(ArrayList<Florist> floristerias)
+			throws ClassNotFoundException, FileNotFoundException, IOException {
 
 		Scanner sc = new Scanner(System.in);
 		String floristName;
-		int floristId = floristerias.size() -1;		
+		int floristId = 0;
+//		int floristId = floristerias.size() -1;		
 		File file = new File("florist.txt");
 		ObjectOutputStream oos = null;
 		boolean found = false;
